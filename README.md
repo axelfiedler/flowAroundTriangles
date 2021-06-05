@@ -42,13 +42,13 @@ First run `read_files.py` to store the simulation data in a Pandas DataFrame, th
 
 | No of layers  | No of nodes   | Loss  |
 | ------------- |:-------------:| -----:|
-1|1|6,175592716317624e-05|
-1|2|0,00021104530605953187|
-1|4|1,063676336343633e-05|
+1|1|6.184e-05|
+1|2|0.00021|
+1|4|1.064e-05|
 ...|...|...|
-15|64|4,459445079874058e-08|
-15|128|1,1231131793465465e-06|
-15|256|1,3692992695268913e-07|
+15|64|4.459e-08|
+15|128|1.123e-06|
+15|256|1.369e-07|
 
 The parameter study is helpful and shows that a good set-up can be found using 8 layers and 32 nodes per layer. Therefore these parameters are used in `train_model.py` to train the model.
 
