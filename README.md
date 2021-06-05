@@ -7,6 +7,8 @@ The project is divided in four parts:
 3. Neural network model training
 4. Dash app for data exploration
 
+The basic idea is to use OpenFOAM to calculate the flow around many differently shaped triangles and obtain the resulting drag coefficient. These results are then used to train a neural network. Finally the neural network can be used to estimate the drag coefficient for arbitrary triangles.
+
 ## Prerequisites
 Tested with the following set-up:
 * OpenFoam-6
@@ -20,4 +22,5 @@ Tested with the following set-up:
   * Dash 1.18.1
 
 ## Mesh creation
-The bash script `runCases.sh` first creates for each cases the required mesh using the set-up in the `mesh` folder.
+The bash script `runCases.sh` first creates the required mesh for each case using the set-up in the `mesh` folder. `blockMesh` creates a structured mesh of hexahedral blocks. One resulting mesh is shown in the image below.
+
