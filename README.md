@@ -5,7 +5,7 @@ The project is divided in four parts:
 1. Mesh creation
 2. CFD calculation
 3. Neural network model training
-4. Dash app for data exploration
+4. Data exploration using Dash
 
 The basic idea is to use OpenFOAM to calculate the flow around many differently shaped triangles at different Reynolds numbers and obtain the resulting drag coefficient. These results are then used to train a neural network. Finally the neural network can be used to estimate the drag coefficient for arbitrary triangles.
 
@@ -38,7 +38,7 @@ After a mesh for one triangle is created, it will be copied from the `mesh` fold
 <img src="https://github.com/axelfiedler/flowAroundTriangles/blob/main/flow_example.PNG" alt="Example of calculated velocity field" width="300"/>
 
 ## Neural network model training ##
-First run `read_files.py` to store the simulation data in a Pandas DataFrame, that can easily be used in the further steps. After that you can run `parameter_study.py` to perform a small parameter study, that will try to train neural networks with different width and depth (i.e. number of nodes per layer and number of layers). Some of the results of that parameter study are shown in the table below.
+First run `read_files.py` to store the simulation data in a Pandas DataFrame, that can easily be used in the further steps. The DataFrame will be saved in `tmp` folder. After that you can run `parameter_study.py` to perform a small parameter study, that will try to train neural networks with different width and depth (i.e. number of nodes per layer and number of layers). Some of the results of that parameter study are shown in the table below.
 
 | No of layers  | No of nodes   | Loss  |
 | ------------- |:-------------:| -----:|
@@ -55,3 +55,15 @@ The parameter study is helpful and shows that a good set-up can be found using 8
 The mean squared error is used as loss function for the training. A plot of the loss on the training dataset and the validation dataset is shown below. It can be observed that additional training epochs would not lead to a better model fit.
 
 <img src="https://github.com/axelfiedler/flowAroundTriangles/blob/main/model_loss_32_nodes_8_layer.png" alt="Loss for model with 32 nodes per layer and 8 layer" width="500"/>
+
+Finally the trained model can be used to predict values using the following structure
+```
+model.predict(x=[[x1,y1,x2,y2,x3,y3]])
+```
+and will return the drag coefficient for `Re=200`, `Re=400` and `Re=600`. The model is saved 
+
+## Data exploration using Dash
+
+To examine the simulation results and the `results_dash.py` Dash app can be used. This app allows the user to choose combinations of x and y coordinates for the triangle and observe the resulting drag coefficient as shown in the animation below. It can be observed that the neural network model is able to reflect some features very well, but fails to incorporate the influence of other paramaters correctly. Thus additional tweaking of the set-up might be necessary.
+
+<img src="https://github.com/axelfiedler/flowAroundTriangles/blob/main/Dash_Animation.gif" alt="Animation of Dash app" width="500"/>
