@@ -11,7 +11,7 @@ The basic idea is to use OpenFOAM to calculate the flow around many differently 
 
 ## Prerequisites
 Tested with the following set-up:
-* OpenFoam-6
+* OpenFOAM-6
 * Python 3.8
   * Tensorflow 2.5.0
   * Scikit-learn 0.23.1
@@ -21,6 +21,12 @@ Tested with the following set-up:
   * Plotly 4.14.1
   * Dash 1.18.1
 
+## Quick start
+To start the simulations simply navigate to the `flowAroundTriangles` folder, type
+```
+./runCases.sh
+```
+in a console that has access OpenFOAM and hit enter.
 ## Mesh creation
 The bash script `runCases.sh` first creates the required mesh for each case using the set-up in the `mesh` folder. By changing the `blockMeshDict` in the `mesh/system` folder meshes for a large number of triangles are craeted. `blockMesh` creates a structured mesh of hexahedral blocks. One resulting mesh is shown in the image below.
 
