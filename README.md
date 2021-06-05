@@ -32,3 +32,4 @@ After a mesh for one triangle is created, it will be copied from the `mesh` fold
 <img src="https://github.com/axelfiedler/flowAroundTriangles/blob/main/flow_example.PNG" alt="Example of calculated velocity field" width="300"/>
 
 ## Neural network model training ##
+First `read_files.py` is used to store the simulation data in a Pandas DataFrame, that can easily be used in the further steps.
