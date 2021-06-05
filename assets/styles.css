@@ -1,0 +1,26 @@
+.left-float {
+    width: 200px;
+    float:left;
+}
+.clear-float {
+  clear: both;
+}
+.full-width {
+  width: 100%;
+}
+#content {
+    margin: auto;
+    width: 70%;
+}
+#triangle-graph {
+  width: 50%;
+  float: left;
+}
+#re-graph {
+    width: 50%;
+    float: left;
+}
+#time-graph {
+    width: 100%;
+    float: left;
+}
