@@ -1,0 +1,13 @@
+Files to modify:
+
+- system/blockMeshDict
+
+
+Commands to be executed in this tutorial for the mesh:
+
+- blockMesh
+
+Remeshing:
+
+- rm -r constant/polyMesh
+- blockMesh
