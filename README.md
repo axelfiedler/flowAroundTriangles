@@ -22,7 +22,7 @@ Tested with the following set-up:
   * Dash 1.18.1
 
 ## Quick start
-To start the simulations simply navigate to the `flowAroundTriangles` folder, type
+To start the simulations simply navigate to the main folder, type
 ```
 ./runCases.sh
 ```
@@ -51,3 +51,7 @@ First run `read_files.py` to store the simulation data in a Pandas DataFrame, th
 15|256|1,3692992695268913e-07|
 
 The parameter study is helpful and shows that a good set-up can be found using 8 layers and 32 nodes per layer. Therefore these parameters are used in `train_model.py` to train the model.
+
+The mean squared error is used as loss function for the training. A plot of the loss on the training dataset and the validation dataset is shown below. It can be observed that additional training epochs would not lead to a better model fit.
+
+<img src="https://github.com/axelfiedler/flowAroundTriangles/blob/main/model_loss_32_nodes_8_layer.png" alt="Loss for model with 32 nodes per layer and 8 layer" width="500"/>
