@@ -1,0 +1,155 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale   0.01;
+
+hVol 40;
+lVol 60;
+x1 19;
+y1 25;
+
+x2 25;
+y2 19;
+
+x3 25;
+y3 25;
+
+nBlock1XCells 50;
+nBlock1YCells 12;
+nBlock2XCells 70;
+nBlock2YCells 12;
+nBlock3XCells 50;
+nBlock3YCells 30;
+nBlock4XCells 12;
+nBlock4YCells 30;
+nBlock5XCells 70;
+nBlock5YCells 30;
+nBlock6XCells 50;
+nBlock6YCells 38;
+nBlock7XCells 70;
+nBlock7YCells 38;
+
+vertices
+(
+    (0 $y2 0)			//0
+    ($x2 $y2 0)			//1
+    ($x2 $y2 0)			//2
+    ($lVol $y2 0)			//3
+    (0 $y1 0)		//4
+    ($x1 $y1 0)		//5
+    ($x3 $y3 0)		//6
+    ($lVol $y3 0)		//7
+    (0 $hVol 0)			//8
+    ($x1 $hVol 0)		//9
+    ($x3 $hVol 0)		//10
+    ($lVol $hVol 0)			//11
+    (0 $y2 0.5)		//12
+    ($x2 $y2 0.5)		//13
+    ($x2 $y2 0.5)		//14
+    ($lVol $y2 0.5)		//15
+    (0 $y1 0.5)		//16
+    ($x1 $y1 0.5)	//17
+    ($x3 $y3 0.5)	//18
+    ($lVol $y3 0.5)		//19
+    (0 $hVol 0.5)		//20
+    ($x1 $hVol 0.5)		//21
+    ($x3 $hVol 0.5)		//22
+    ($lVol $hVol 0.5)		//23
+	(0 0 0)			//24 Part of floor patch
+	(0 0 0.5)		//25 Part of floor patch
+	($x2 0 0)			//26 Part of floor patch
+	($x2 0 0.5)		//27 Part of floor patch
+	($lVol 0 0)			//28 Part of floor patch
+	($lVol 0 0.5)		//29 Part of floor patch
+);
+
+blocks
+(
+    hex (0 1 5 4 12 13 17 16) ($nBlock1XCells $nBlock1YCells 1) simpleGrading (1 1 1)
+    hex (1 3 7 6 13 15 19 18) ($nBlock2XCells $nBlock2YCells 1) simpleGrading (1 1 1)
+    hex (4 5 9 8 16 17 21 20) ($nBlock3XCells $nBlock3YCells 1) simpleGrading (1 1 1)
+    hex (5 6 10 9 17 18 22 21) ($nBlock4XCells $nBlock4YCells 1) simpleGrading (1 1 1)
+    hex (6 7 11 10 18 19 23 22) ($nBlock5XCells $nBlock5YCells 1) simpleGrading (1 1 1)
+	hex (24 26 1 0 25 27 13 12) ($nBlock6XCells $nBlock6YCells 1) simpleGrading (1 1 1)
+	hex (26 28 3 1 27 29 15 13) ($nBlock7XCells $nBlock7YCells 1) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+	inlet
+	{
+		type patch;
+		faces
+		(
+			(24 25 12 0)
+			(0 12 16 4)
+			(4 16 20 8)
+		);
+	}
+
+	outlet
+	{
+		type patch;
+		faces
+		(
+			(28 29 15 3)
+			(3 15 19 7)
+			(7 19 23 11)
+		);
+	}
+
+	triangle
+	{
+		type wall;
+		faces
+		(
+			(1 13 17 5)
+			(5 17 18 6)
+			(6 18 13 1)
+		);
+	}
+
+	upperWall
+	{
+		type wall;
+		faces
+		(
+			(8 20 21 9)
+			(9 21 22 10)
+			(10 22 23 11)
+		);
+	}
+
+	lowerWall
+	{
+		type wall;
+		faces
+		(
+			(24 25 27 26)
+			(26 27 28 29)
+		);
+	}
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
