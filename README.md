@@ -7,7 +7,7 @@ The project is divided in four parts:
 3. Neural network model training
 4. Data exploration using Dash
 
-The basic idea is to use OpenFOAM to calculate the flow around many differently shaped triangles at different Reynolds numbers and obtain the resulting drag coefficient. These results are then used to train a neural network. Finally the neural network can be used to estimate the drag coefficient for arbitrary triangles.
+The basic idea is to use OpenFOAM to calculate the flow around 1,458 differently shaped triangles at three different Reynolds numbers and obtain the resulting drag coefficient. These results are then used to train a neural network. Finally the neural network can be used to estimate the drag coefficient for arbitrary triangles.
 
 ## Prerequisites
 Tested with the following set-up:
